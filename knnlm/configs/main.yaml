@@ -7,8 +7,8 @@ knn:
   use_gpu: false
 
 data:
-  train_path: data/data.arrow
-  val_path: data/data.arrow
+  train_path: data/tokenized/t5-large/data.arrow
+  val_path: data/tokenized/t5-large/data.arrow
   train_batch_size: 256
   eval_batch_size: 256
 
