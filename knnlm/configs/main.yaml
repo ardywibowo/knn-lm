@@ -1,0 +1,33 @@
+knn:
+  store_dir: store
+  store_size: 1000000
+  temperature: 0.5
+  k: 256
+  lambda: 0.90
+  use_gpu: false
+
+data:
+  train_path: data/data.arrow
+  val_path: data/data.arrow
+  train_batch_size: 256
+  eval_batch_size: 256
+
+model:
+  name: t5-large
+  checkpoint: models/t5-large-finetune/2023-09-11_23-44-51/best/best-009199-0.0075-ckpt.pth
+  enable_knn: true
+
+training:
+  out_name: "t5-large-finetune"
+  num_epochs: 8
+  learning_rate: 1.0e-4
+  warmup_steps: 1.0e+4
+  gradient_accumulation_steps: 16
+  max_num_checkpoints: 5
+  eval_iters: 40
+  save_interval: 10
+  log_interval: 1
+
+deepspeed:
+  zero_optimization:
+    stage: 2
